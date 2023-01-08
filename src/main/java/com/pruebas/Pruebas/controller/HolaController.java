@@ -1,14 +1,15 @@
 package com.pruebas.Pruebas.controller;
 
 import com.pruebas.Pruebas.beans.RequestUsuario;
-import com.pruebas.Pruebas.beans.Usuario;
+import com.pruebas.Pruebas.entity.Usuario;
 import com.pruebas.Pruebas.services.UsuarioServices;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin()
@@ -22,7 +23,12 @@ public class HolaController {
             @RequestParam(name = "nombre") String nombre
     ){
         Usuario u = service.getUsuarioUpperCase(nombre);
-       return new ResponseEntity(u, HttpStatus.OK);
+        if(u==null){
+            return new ResponseEntity( HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity(u, HttpStatus.OK);
+        }
+
     }
 
     @GetMapping(value = "usuarioL", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,4 +46,13 @@ public class HolaController {
         Usuario u = service.insertUsuario(usuario.getName(), usuario.getLastName(), usuario.getAge());
         return new ResponseEntity(u, HttpStatus.OK);
     }
+
+
+    @GetMapping(value = "usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Usuario> obtenerTodosLosUsuarios(
+    ){
+        List<Usuario> u = service.getTodosLosUsuarios();
+        return new ResponseEntity(u, HttpStatus.OK);
+    }
+
 }

@@ -1,9 +1,13 @@
 package com.pruebas.Pruebas;
 
-import com.pruebas.Pruebas.beans.Usuario;
+import com.pruebas.Pruebas.entity.Usuario;
 import com.pruebas.Pruebas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class UsuarioDAO {
@@ -24,6 +28,17 @@ public class UsuarioDAO {
         u.setAge(age);
         repository.save(u);
         return  repository.obtenerUsuarioNombre(name);
+    }
+
+    public List<Usuario> getTodosLosUsuarios(){
+
+        Iterator<Usuario> iter = repository.findAll().iterator();
+        List<Usuario> copy = new ArrayList<Usuario>();
+        while (iter.hasNext()){
+            copy.add(iter.next());
+        }
+
+        return  copy;
     }
 
 }

@@ -1,9 +1,11 @@
 package com.pruebas.Pruebas.services;
 
 import com.pruebas.Pruebas.UsuarioDAO;
-import com.pruebas.Pruebas.beans.Usuario;
+import com.pruebas.Pruebas.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsuarioServices {
@@ -14,9 +16,10 @@ public class UsuarioServices {
     public Usuario getUsuarioUpperCase(String nombre){
 
         Usuario u = dao.getUsuario(nombre);
-        u.setName(u.getName().toUpperCase());
-        u.setLastName(u.getLastName().toUpperCase());
-
+        if(u != null){
+            u.setName(u.getName().toUpperCase());
+            u.setLastName(u.getLastName().toUpperCase());
+        }
         return  u;
     }
 
@@ -32,4 +35,12 @@ public class UsuarioServices {
     public Usuario insertUsuario(String name, String lastName, String age){
         return  dao.insertUsuario(name, lastName, age);
     }
+
+    public List<Usuario> getTodosLosUsuarios(){
+
+        List<Usuario> listaUsuarios = dao.getTodosLosUsuarios();
+
+        return  listaUsuarios;
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.pruebas.Pruebas.beans;
+package com.pruebas.Pruebas.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -15,14 +15,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USUARIOS")
+@Table(name = "USUARIOSDB")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_id_seq")
-    @SequenceGenerator(sequenceName = "task_id_seq", allocationSize = 1, name = "task_id_seq")
+    @Column(name="ID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     Long id;
     @Column(name = "NOMBRE")
     private String name;
