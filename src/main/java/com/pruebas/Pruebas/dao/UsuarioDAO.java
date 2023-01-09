@@ -1,4 +1,4 @@
-package com.pruebas.Pruebas;
+package com.pruebas.Pruebas.dao;
 
 import com.pruebas.Pruebas.entity.Usuario;
 import com.pruebas.Pruebas.repository.UsuarioRepository;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioDAO {
@@ -19,6 +20,15 @@ public class UsuarioDAO {
 
         Usuario u = repository.obtenerUsuarioNombre(nombre);
         return  u;
+    }
+
+    public Usuario getUsuarioById(Long id){
+        Optional<Usuario> usuarioOpcional = repository.findById(id);
+        if(usuarioOpcional.isPresent()){
+            return  usuarioOpcional.get();
+        }else{
+            return null;
+        }
     }
 
     public Usuario insertUsuario(String name, String lastName, String age){
@@ -39,6 +49,16 @@ public class UsuarioDAO {
         }
 
         return  copy;
+    }
+
+    public Usuario actualizaUsuario(Usuario u){
+        repository.save(u);
+        Optional<Usuario> usuarioOpcional = repository.findById(u.getId());
+        if(usuarioOpcional.isPresent()){
+            return usuarioOpcional.get();
+        }else{
+            return null;
+        }
     }
 
 }

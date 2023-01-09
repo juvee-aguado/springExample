@@ -62,4 +62,18 @@ public class HolaController {
         return new ResponseEntity(u, HttpStatus.OK);
     }
 
+    @PutMapping(value = "actualiza_usuario/{id}")
+    public ResponseEntity<Usuario> actualizaUsuario(
+            @RequestBody RequestUsuario usuario,
+            @PathVariable(name = "id") Long idUser
+    ){
+        Usuario u = service.actualizaUsuario(idUser, usuario);
+        if(u == null){
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity(u, HttpStatus.OK);
+        }
+
+    }
+
 }
