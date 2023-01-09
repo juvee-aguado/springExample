@@ -33,10 +33,17 @@ public class HolaController {
 
     @GetMapping(value = "usuarioL", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuario> usuarioL(
+
             @RequestParam(name = "nombre") String nombre
     ){
         Usuario u = service.getUsuarioLoweCase(nombre);
-        return new ResponseEntity(u, HttpStatus.OK);
+
+        if( u==null ){
+            return new ResponseEntity(u, HttpStatus.NO_CONTENT);
+        }else{
+            return new ResponseEntity(u, HttpStatus.OK);
+        }
+
     }
 
     @PostMapping(value = "insertaUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
