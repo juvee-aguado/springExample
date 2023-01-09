@@ -25,7 +25,7 @@ public class Cereales  implements Serializable {
     @Column(name = "NOMBRE")
     private String name;
     @Column (name = "CANTIDAD" )
-    private Decimal cantidad;
+    private Double cantidad;
     @Column (name = "FECHA")
     private String fecha;
 }

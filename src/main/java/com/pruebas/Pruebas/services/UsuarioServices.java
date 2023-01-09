@@ -26,8 +26,10 @@ public class UsuarioServices {
     public Usuario getUsuarioLoweCase(String nombre){
 
         Usuario u = dao.getUsuario(nombre);
-        u.setName(u.getName().toLowerCase());
-        u.setLastName(u.getLastName().toLowerCase());
+       if(u!=null){
+           u.setName(u.getName().toLowerCase());
+           u.setLastName(u.getLastName().toLowerCase());
+       }
 
         return  u;
     }
