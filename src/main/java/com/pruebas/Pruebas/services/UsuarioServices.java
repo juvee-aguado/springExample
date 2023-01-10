@@ -13,7 +13,7 @@ public class UsuarioServices {
 
     @Autowired
     UsuarioDAO dao;
-
+//metodo para convertir en mayusculas
     public Usuario getUsuarioUpperCase(String nombre){
 
         Usuario u = dao.getUsuario(nombre);
@@ -23,7 +23,7 @@ public class UsuarioServices {
         }
         return  u;
     }
-
+//metodo para convertir en minusculas
     public Usuario getUsuarioLoweCase(String nombre){
 
         Usuario u = dao.getUsuario(nombre);
