@@ -1,7 +1,6 @@
 package com.pruebas.Pruebas.dao;
 
 import com.pruebas.Pruebas.entity.Cereales;
-import com.pruebas.Pruebas.entity.Usuario;
 import com.pruebas.Pruebas.repository.CerealesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,11 +26,12 @@ public class CerealesDAO {
     }
 
     //creando el metodo de insertar nuevos cereales
-    public Cereales insertarCereales(String nombre, double cantidad, String fecha) {
+    public Cereales insertarCereales(String nombre, double cantidad, String fecha, double precio) {
         Cereales c = new Cereales();
         c.setName(nombre);
         c.setCantidad(cantidad);
         c.setFecha(fecha);
+        c.setPrecio(precio);
         repository.save(c);
         return repository.obtenerCerealesNombre(nombre);
     }

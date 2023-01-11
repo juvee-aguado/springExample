@@ -18,8 +18,8 @@ public class CerealesService {
         return  dao.obtenerTodosLosCereales();
     }
 
-    public Cereales insertarCereales(String nombre, double cantidad, String fecha) {
-        return dao.insertarCereales(nombre, cantidad, fecha);
+    public Cereales insertarCereales(String nombre, double cantidad, String fecha, double precio) {
+        return dao.insertarCereales(nombre, cantidad, fecha, precio);
     }
     public Cereales actualizaCereales (Long idCer, RequestCereales cerealesRequest){
 
@@ -28,6 +28,7 @@ public class CerealesService {
         aCer.setName(cerealesRequest.getNombre());
         aCer.setCantidad(cerealesRequest.getCantidad());
         aCer.setFecha(cerealesRequest.getFecha());
+        aCer.setPrecio(cerealesRequest.getPrecio());
 
         Cereales cerealesBaseDatos = dao.getCerealesById(aCer.getId());
         if(cerealesBaseDatos==null){

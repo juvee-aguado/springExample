@@ -1,9 +1,7 @@
 package com.pruebas.Pruebas.controller;
 
 import com.pruebas.Pruebas.beans.RequestCereales;
-import com.pruebas.Pruebas.beans.RequestUsuario;
 import com.pruebas.Pruebas.entity.Cereales;
-import com.pruebas.Pruebas.entity.Usuario;
 import com.pruebas.Pruebas.services.CerealesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +27,7 @@ public class CerealesController {
     public ResponseEntity<Cereales> insertarCereales(
             @RequestBody RequestCereales cereales
     ) {
-        Cereales c = service.insertarCereales(cereales.getNombre(), cereales.getCantidad(), cereales.getFecha());
+        Cereales c = service.insertarCereales(cereales.getNombre(), cereales.getCantidad(), cereales.getFecha(), cereales.getPrecio());
         return new ResponseEntity(c, HttpStatus.OK);
     }
 

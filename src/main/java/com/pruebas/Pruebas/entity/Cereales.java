@@ -28,4 +28,6 @@ public class Cereales  implements Serializable {
     private Double cantidad;
     @Column (name = "FECHA")
     private String fecha;
+    @Column (name = "PRECIO" )
+    private Double precio;
 }

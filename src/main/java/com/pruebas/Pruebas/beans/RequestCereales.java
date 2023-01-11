@@ -15,4 +15,5 @@ public class RequestCereales implements Serializable {
     private String nombre;
     private double cantidad;
     private String fecha;
+    private double precio;
 }
